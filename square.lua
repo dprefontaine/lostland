@@ -17,21 +17,7 @@ function square:new(coordinate,stat_type,moveable)
 	return o
 end
 
-function square:IsOfCoord(other_coord)
-	local result = 0
-	
-	if (self.coordinate[1] == other_coord[1]) then
-		result = result + 1
-	end
-	
-	if (self.coordinate[2] == other_coord[2]) then
-		result = result + 1
-	end
-	
-	return result
-end
-
---Coordinate accessors and mutators
+--Coordinate accessor, mutator, and comparer
 --
 --[1] is x_coord
 --[2] is y_coord
@@ -48,7 +34,23 @@ function square:set_coord(new_x,new_y)
 	self.coordinate[2] = new_y
 end
 
---Stat accessors and mutators
+function square:compare_coord(other_coord)
+	local result = 0
+	--Comparing x coordinate
+	--
+	if (self.coordinate[1] == other_coord[1]) then
+		result = result + 1
+	end
+	--Comparing y coordinate
+	--
+	if (self.coordinate[2] == other_coord[2]) then
+		result = result + 1
+	end
+	
+	return result
+end
+
+--Stat accessor, mutator, and comparer
 --
 --0 should be none
 --1 should be home
@@ -64,7 +66,11 @@ function square:set_stat(new_stat)
 	self.stat_type = new_stat
 end
 
---Moveable accessors and mutators
+function square:compare_stat(other_stat)
+	return (self.stat_type == other_stat)
+end
+
+--Moveable accessor, mutator, and comparer
 --
 
 function square:get_moveable()
@@ -73,4 +79,8 @@ end
 
 function square:set_moveable(new_move)
 	self.is_moveable = new_move
+end
+
+function square:compare_moveable(other_moveable)
+	return (self.is_moveable == other_moveable)
 end

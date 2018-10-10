@@ -1,2 +1,2 @@
-# rage-of-angels
-MOBA Card Game Project
+# lostland whatever
+Aurora Card Game Project
